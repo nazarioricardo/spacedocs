@@ -16,7 +16,7 @@ Loads customizable settings such as:
 
 ## Events
 
-1. [BegingPlay](###beginplay)
+1. [BeginPlay](### beginplay)
 2. [Tick](###tick)
 3. [Hit](###hit)
 
