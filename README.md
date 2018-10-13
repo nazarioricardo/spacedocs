@@ -223,93 +223,142 @@ Else, set to cruise.
 #### Public
 #### Float
 
+A modifier that could be renamed to 'accleration rate' because that's what it is.
+
+The rate at which a ship accelerates forward and backwards
+
 ### Turn Speed
 #### Public
 #### Float
+
+The rate at which a ship rotates around its axes.
 
 ### Max Speed
 #### Public
 #### Float
 
+The highest possible value of forward movement.
+
 ### Min Speed
 #### Public
 #### Float
+
+The lowest possible value of backward movement
 
 ### Max Up Speed
 #### Public
 #### Float
 
+The highest possible value of upward or downward movement.
+
+
 ### Max Bank Angle
 #### Public
 #### Float
+
+Maximum angle of bank on yaw/strafe.
 
 ### Max Collision Alpha
 #### Public
 #### Float
 
+Max alpha value for the rotator on collision [deflect](####deflect).
+
 ### Inverted Pitch
 #### Public
 #### Bool
+
+True if pitch is inverted.
 
 ### Throttle Percentage
 #### Private
 #### Float
 
+Percentage of [current forward speed](###current forward speed) to [max speed](###max speed)
+
 ### Strafe Percentage
 #### Private
 #### Float
+
+Percentage of [current strafe speed](###current strafe speed) to max strafe speed.
 
 ### Up Percentage
 #### Private
 #### Float
 
+Percentage of [current up speed](###current up speed) to max up speed.
+
 ### Current Forward Speed
 #### Private
 #### Float
+
+Current value of forward speed.
 
 ### Current Up Speed
 #### Private
 #### Float
 
+Current value of up speed.
+
 ### Current Strafe Speed
 #### Private
 #### Float
+
+Current value of strafe speed
 
 ### Current Pitch Speed
 #### Private
 #### Float
 
+Current value of active pitching speed.
+
 ### Current Yaw Speed
 #### Private
 #### Float
+
+Current value of active yawing speed.
 
 ### Current Roll Speed
 #### Private
 #### Float
 
+Current value of active rolling speed.
+
 ### Current Forward Force
 #### Private
 #### Float
+
+Current value of force moving forward resulting from a [hit](###hit) and calculated in the [add forces](###add forces) function.
 
 ### Current Strafe Force
 #### Private
 #### Float
 
+Current value of force moving sideways resulting from a [hit](###hit) and calculated in the [add forces](###add forces) function.
+
 ### Current Up Force
 #### Private
 #### Float
+
+Current value of force moving upwards resulting from a [hit](###hit) and calculated in the [add forces](###add forces) function.
 
 ### Current Bank Angle
 #### Private
 #### Float
 
+Current value for bank angle.
+
 ### Spring Arm Length
 #### Private
 #### Float
 
+Length of camera boom
+
 ### Spring Arm Offset
 #### Private
 #### Vector
+
+Offset for camera boom
 
 ### Pitch Inversion Modifier
 #### Private
@@ -320,6 +369,8 @@ If Inverted Pitch is true, value will be -1.0. Otherwise, it will be 1.0.
 ### Active Flight Mode
 #### Private
 #### Enum
+
+Current flight mode, either `hover` or `cruise`.
 
 ### Forward Throttle Is Pressed
 #### Private
@@ -338,9 +389,31 @@ If Inverted Pitch is true, value will be -1.0. Otherwise, it will be 1.0.
 
 ### Accelerate
 
+Parameters:
+- Acceleration Rate
+- Axis Value
+- Speed (current speed)
+- Maximum
+- Minimum
+
+Increases or decreases the current speed by acceleration rate up to its maximum or down to its minimum.
+
 ### BoardShip
+
+Parameter:
+- Player
+
+Takes in a player object, disables its collision, attaches to ship object in pilot seat socket and changes active camera to ship camera.
 
 ### AddForces
 
+Parameter:
+- Hit
+
+Takes in a collision hit location (location on ship) breaks down the vector and uses this to calculate [current forward force](###current forward force), [current up force](###current up force), and [current strafe force](###current strafe force) 
+
 ### RemoveForces
 
+No parameters
+
+Interpolates [current forward force](###current forward force), [current up force](###current up force), and [current strafe force](###current strafe force) from their current values to 0 on every [tick](###tick)
